@@ -1,14 +1,14 @@
 specVersion: v0.1.0
 package:
-  name: 'substreams_test' # the name to be used in the .spkg
-  version: v1.0.1 # the version to use when creating the .spkg
+  name: "erc4626_substreams"
+  version: v0.0.1
 
-imports: # dependencies
+imports:
   entity: https://github.com/streamingfast/substreams-entity-change/releases/download/v0.2.1/substreams-entity-change-v0.2.1.spkg
 
-protobuf: # specifies custom types for use by Substreams modules
+protobuf:
   files:
-    - example.proto
+    - erc4626.proto
   importPaths:
     - ./proto
 
@@ -17,17 +17,62 @@ binaries:
     type: wasm/rust-v1
     file: ./target/wasm32-unknown-unknown/release/substreams.wasm
 
-modules: # specify modules with their inputs and outputs.
-  - name: map_contract
+modules:
+  - name: map_contracts
     kind: map
+    initialBlock: 16496939
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:test.Contracts
+      type: proto:schema.Contracts
 
-  - name: graph_out
-    kind: map
-    inputs:
-      - map: map_contract
-    output:
-      type: proto:substreams.entity.v1.EntityChanges # this type can be consumed by Graph Node
+#  - name: map_borrow_transactions
+#    kind: map
+#    initialBlock: 16496939
+#    inputs:
+#      - source: sf.ethereum.type.v2.Block
+#    output:
+#      type: proto:schema.Transfers
+#
+#  - name: map_events
+#    kind: map
+#    initialBlock: 16496939
+#    inputs:
+#      - map: map_supply_transactions
+#      - map: map_borrow_transactions
+#    output:
+#      type: proto:schema.Transfers
+#
+#  - name: store_total_supply
+#    kind: store
+#    initialBlock: 16496939
+#    updatePolicy: set
+#    valueType: bigint
+#    inputs:
+#      - map: map_supply_transactions
+#
+#  - name: store_total_borrow
+#    kind: store
+#    initialBlock: 16496939
+#    updatePolicy: set
+#    valueType: bigint
+#    inputs:
+#      - map: map_borrow_transactions
+#
+#  - name: map_pool
+#    kind: map
+#    initialBlock: 16496939
+#    inputs:
+#      - store: store_total_supply
+#      - store: store_total_borrow
+#    output:
+#      type: proto:schema.Pool
+#
+#  - name: graph_out
+#    kind: map
+#    initialBlock: 16496939
+#    inputs:
+#      - map: map_events
+#      - map: map_pool
+#    output:
+#      type: proto:substreams.entity.v1.EntityChanges

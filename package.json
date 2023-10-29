@@ -1,6 +1,6 @@
 {
-  "name": "substream-oracle",
-  "version": "0.1.0",
+  "name": "erc4626-substreamss",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "codegen": "graph codegen",
@@ -11,7 +11,7 @@
     "substreams:package": "substreams pack ./substreams.yaml",
     "substreams:prepare": "yarn substreams:protogen && yarn substreams:build && yarn substreams:package",
     "substreams:protogen": "substreams protogen ./substreams.yaml --exclude-paths='sf/substreams,google'",
-    "substreams:stream": "substreams run -e mainnet.eth.streamingfast.io:443 substreams.yaml graph_out -s 12292922 -t +10"
+    "substreams:stream": "substreams run -e mainnet.eth.streamingfast.io:443 substreams.yaml map_contracts -s 16496939 -t +200"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "0.60.0"

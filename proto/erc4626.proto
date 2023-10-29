@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package erc4626;
+
+//enum TransferType {
+//  SUPPLY = 0;
+//  BORROW = 1;
+//  REPAY = 2;
+//  WITHDRAW = 3;
+//}
+
+message Transfers {
+  repeated Transfer transfers = 1;
+}
+
+message Transfer {
+  string id = 1;
+  string token_address = 2;
+  uint64 value = 3;
+}
+
+message ERC4626 {
+  string id = 1;
+}
+
+message Contracts {
+  repeated Contract contracts = 1;
+}
+
+message Contract {
+  string address = 1;
+  uint64 blockNumber = 2;
+  string timestamp = 3;
+  uint64 ordinal = 4;
+}
