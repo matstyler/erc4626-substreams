@@ -1,8 +1,10 @@
 type ERC4626 @entity {
     id: ID!
     address: String!
+    name: String
     symbol: String!
-    platform: String
+    decimals: Int!
+    #    totalSupply: BigInt!
+    assets: String!
     totalAssets: BigInt!
-    totalSupply: BigInt!
 }

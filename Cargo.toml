@@ -17,6 +17,7 @@ base64 = "0.13"
 ethabi = "18.0.0"
 num-bigint = "0.4.3"
 log = "0.4.20"
+hex = { version = "0.4.3", features = [] }
 
 [build-dependencies]
 anyhow = "1.0.72"

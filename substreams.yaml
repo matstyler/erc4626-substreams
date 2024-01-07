@@ -18,61 +18,33 @@ binaries:
     file: ./target/wasm32-unknown-unknown/release/substreams.wasm
 
 modules:
-  - name: map_contracts
+  - name: map_erc4626_contracts
     kind: map
-    initialBlock: 16496939
+    initialBlock: 15690074
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:schema.Contracts
-
-#  - name: map_borrow_transactions
-#    kind: map
-#    initialBlock: 16496939
-#    inputs:
-#      - source: sf.ethereum.type.v2.Block
-#    output:
-#      type: proto:schema.Transfers
-#
-#  - name: map_events
-#    kind: map
-#    initialBlock: 16496939
-#    inputs:
-#      - map: map_supply_transactions
-#      - map: map_borrow_transactions
-#    output:
-#      type: proto:schema.Transfers
-#
-#  - name: store_total_supply
-#    kind: store
-#    initialBlock: 16496939
-#    updatePolicy: set
-#    valueType: bigint
-#    inputs:
-#      - map: map_supply_transactions
-#
-#  - name: store_total_borrow
-#    kind: store
-#    initialBlock: 16496939
-#    updatePolicy: set
-#    valueType: bigint
-#    inputs:
-#      - map: map_borrow_transactions
-#
-#  - name: map_pool
-#    kind: map
-#    initialBlock: 16496939
-#    inputs:
-#      - store: store_total_supply
-#      - store: store_total_borrow
-#    output:
-#      type: proto:schema.Pool
-#
-#  - name: graph_out
-#    kind: map
-#    initialBlock: 16496939
-#    inputs:
-#      - map: map_events
-#      - map: map_pool
-#    output:
-#      type: proto:substreams.entity.v1.EntityChanges
+      type: proto:schema.Erc4626Assets
+  #
+  #  - name: store_erc4626_contracts
+  #    kind: store
+  #    initialBlock: 16496939
+  #    updatePolicy: set
+  #    valueType: bigint
+  #    inputs:
+  #      - map: map_erc4626_contracts
+  #
+  #  - name: map_borrow_transactions
+  #    kind: map
+  #    initialBlock: 16496939
+  #    inputs:
+  #      - source: sf.ethereum.type.v2.Block
+  #    output:
+  #      type: proto:schema.Transfers
+  - name: graph_out
+    kind: map
+    initialBlock: 15690074
+    inputs:
+      - map: map_erc4626_contracts
+    output:
+      type: proto:substreams.entity.v1.EntityChanges

@@ -884,6 +884,7 @@ dependencies = [
  "anyhow",
  "base64",
  "ethabi 18.0.0",
+ "hex",
  "log",
  "num-bigint",
  "prost",

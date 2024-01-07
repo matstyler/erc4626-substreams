@@ -10,7 +10,7 @@ dataSources:
     source:
       package:
         moduleName: graph_out
-        file: erc4626-substreams-v0.0.1.spkg
+        file: erc4626-substreams/erc4626-substreams-v0.0.1.spkg
     mapping:
       kind: substreams/graph-entities
       apiVersion: 0.0.5
