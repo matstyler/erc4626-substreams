@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "auth": "export SUBSTREAMS_API_TOKEN=$(curl https://auth.streamingfast.io/v1/auth/issue -s --data-binary '{\"api_key\":${SUBSTREAMS_API_TOKEN}}' | jq -r .token)",
     "codegen": "graph codegen",
     "deploy": "graph deploy",
     "subgraph:build": "graph build",
